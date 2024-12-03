@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!--В теге <hibernate-configuration> собрана вся конфигурация (в примере для MySQL)-->
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database connection settings -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <!-- Здесь указывается путь к БД, в данном случае это БД example_schema в MySQL, созданная заранее-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/example_schema?useSSL=false</property>
+        <!-- Логин для входа в MySQL -->
+        <property name="connection.username">root</property>
+        <!-- Пароль для входа в MySQL -->
+        <property name="connection.password">dEr4C5Ghjn93Znf#2</property>
+        <!-- JDBC connection pool settings ... using built-in test pool -->
+        <property name="connection.pool_size">10</property>
+        <!-- С каким диалектом MySQL надо работать Hibernate -->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <!-- Отображение SQL в консоли, который генерирует Hibernate (true - да, отображать) -->
+        <property name="show_sql">true</property>
+        <!-- Set the current session context -->
+        <property name="current_session_context_class">thread</property>
+        <!-- Режим (create, update, validate и т.д.) -->
+        <property name="hbm2ddl.auto">update</property>
+        <!-- Mapping class -->
+        <mapping class="tables.Student"/>
+        <mapping class="tables.Teacher"/>
+        <mapping class="tables.Subscription"/>
+        <mapping class="tables.Course"/>
+        <mapping class="tables.PurchaseList"/>
+        <mapping class="tables.LinkedPurchaseList"/>
+
+    </session-factory>
+</hibernate-configuration>
